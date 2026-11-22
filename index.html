@@ -253,11 +253,12 @@
       // Event klik setiap kartu
       cards.forEach((card) => {
         card.addEventListener("click", function () {
-          // Timer hanya dimulai satu kali
+          //Timer hanya dimulai satu kali
           if (!timerStarted) {
             timer();
             timerStarted = true;
           }
+
           flipCard(card);
         });
       });
