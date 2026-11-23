@@ -138,6 +138,8 @@
 
     <script>
       const cards = document.querySelectorAll(".card");
+      const soundBenar = new Audio("sound/benar.mp3");
+      const soundSalah = new Audio("sound/salah.mp3");
 
       // Mengacak posisi kartu
       const cardArray = [...cards];
@@ -209,6 +211,7 @@
           flippedCards.forEach((card) => {
             card.classList.remove("animate__flipInY");
             card.classList.add("animate__animated", "animate__rubberBand");
+            soundBenar.play();
           });
           // Beri jeda sebelum kartu dihilangkan
           await delay();
@@ -223,7 +226,7 @@
           // Periksa apakah semua kartu sudah ditemukan
           if (getRemainingCards().length === 0) {
             await delay(1000);
-            alert("Congratulations! You finish the Game");
+            alert("Selamat! Anda berhasil menyelesaikan Game. \n Daya ingat sangat bagus ❤️");
             location.reload();
             return;
           }
@@ -232,6 +235,7 @@
           flippedCards.forEach((card) => {
             card.classList.remove("animate__flipInY");
             card.classList.add("animate__animated", "animate__shakeX");
+            soundSalah.play();
           });
           // Beri jeda sebelum kartu ditutup
           await delay();
@@ -278,7 +282,7 @@
 
           if (timeLeft === 0) {
             clearInterval(countDown);
-            alert("Waktu Anda sudah Habis");
+            alert("Waktu Anda sudah Habis \n Coba lagi!!");
             location.reload();
             return;
           }
